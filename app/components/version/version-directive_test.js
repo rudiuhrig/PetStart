@@ -1,7 +1,7 @@
 'use strict';
 
-describe('myApp.version module', function() {
-  beforeEach(module('myApp.version'));
+describe('petstartApp.version module', function() {
+  beforeEach(module('petstartApp.version'));
 
   describe('app-version directive', function() {
     it('should print current version', function() {
