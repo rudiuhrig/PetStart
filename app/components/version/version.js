@@ -5,4 +5,4 @@ angular.module('petstartApp.version', [
   'petstartApp.version.version-directive'
 ])
 
-.value('version', '0.1');
+.value('version', '1-0-0');
