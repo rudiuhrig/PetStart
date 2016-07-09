@@ -1,0 +1,53 @@
+<div class="container">
+	<h3>{{appTitle}}</h3>
+
+	<div class="jumbotron">
+		<div>Informe o nome do pet</div>
+		<form name="searchForm">
+			<div class="controls form-inline customMarginBottom">
+				<input type="text" class="form-control" placeholder="Pesquise pelo nome do pet e clique no botão"
+					ng-model="petName"	name="petName" ng-required="true" ng-minlength="3" ng-maxlength="50"
+					ng-change="pets.rows = []"/>
+
+				<button ng-click="searchPet(petName)" ng-disabled="searchForm.$invalid" class="btn btn-lg btn-success">
+					Pesquisar
+				</button>
+		    	</div>
+
+			<div ng-hide="searchForm.$valid || searchForm.$pristine">
+			        <div ng-show="searchForm.petName.$error.required" class="alert alert-danger" role="alert">
+			        	Por favor, informe o nome do pet
+			        </div>
+			        <div ng-show="searchForm.petName.$error.minlength" class="alert alert-warning" role="alert">
+			        	<strong>Aviso!</strong> Necessário no mínimo 3 letras
+			        </div>
+			        <div ng-show="searchForm.petName.$error.maxlength" class="alert alert-warning" role="alert">
+			        	<strong>Aviso!</strong> Máximo 50 letras
+			        </div>
+			</div>
+		</form>
+	</div>
+
+	<div class="jumbotron">
+		<div>Pesquisa pelo nome: {{petName}}</div>
+		<loading class="spinner" ng-show="loading"></loading>
+		<div ng-show="petsNotFound" class="alert alert-info" role="alert">Nenhum pet encontrado</div>
+		<div ng-show="errorRest" class="alert alert-danger" role="alert">Ocorreu um erro ao pesquisar</div>
+		<div ng-show="pets.length > 0">
+			<table class="table table-bordered customWhiteBG">
+				<tr class="customSilverBG">
+					<th>Código</th>
+					<th>Nome</th>
+				</tr>
+				<tr ng-repeat="pet in pets">
+					<td><a href="#/pet/{{pet.id}}" ng-click="setFilters(pet)">{{pet.id}}</a></td>
+					<td><a href="#/pet/{{pet.id}}" ng-click="setFilters(pet)">{{pet.name}}</a></td>
+				</tr>
+				<tr class="customSilverBG">
+					<td colspan="2" align="left">Total de pets encontrados: {{pets.length}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</div>
