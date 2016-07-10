@@ -1,5 +1,5 @@
 <div class="container">
-	<h3>{{appTitle}}</h3>
+	<h4>{{appTitle}}</h4>
 
 	<div class="jumbotron">
 		<div>Informe o nome do pet</div>
@@ -38,10 +38,12 @@
 				<tr class="customSilverBG">
 					<th>Código</th>
 					<th>Nome</th>
+					<th>Dono</th>
 				</tr>
 				<tr ng-repeat="pet in pets">
 					<td><a href="#/pet/{{pet.id}}" ng-click="setFilters(pet)">{{pet.id}}</a></td>
 					<td><a href="#/pet/{{pet.id}}" ng-click="setFilters(pet)">{{pet.name}}</a></td>
+					<td><a href="#/pet/{{pet.id}}" ng-click="setFilters(pet)">{{pet.owner}}</a></td>
 				</tr>
 				<tr class="customSilverBG">
 					<td colspan="2" align="left">Total de pets encontrados: {{pets.length}}</td>

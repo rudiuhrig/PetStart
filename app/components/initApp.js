@@ -5,6 +5,7 @@ angular.module('petstartApp', [
   'ngRoute',
   'petstartApp.view1',
   'petstartApp.view2',
+  'petstartApp.mainView',
   'petstartApp.petListView',
   'petstartApp.version',
   'petstartApp.footer-directive',
@@ -15,5 +16,5 @@ angular.module('petstartApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  //$routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/main'});
 }]);

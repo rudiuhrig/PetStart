@@ -5,8 +5,8 @@ angular.module('petstartApp.petListView', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
 
     //Define route to this view
-    $routeProvider.when('/petListView', {
-        templateUrl: 'views/pet/petListView.html',
+    $routeProvider.when('/pets', {
+        templateUrl: 'views/pets/petListView.html',
         controller: 'PetListViewCtrl'
     });
 }])
@@ -15,7 +15,7 @@ angular.module('petstartApp.petListView', ['ngRoute'])
 
     //Initialize variables
     $scope.appTitle  = 'Cadastro de Pets';
-    $scope.pets        = new Array();
+    $scope.pets        = [];
     $scope.loading   = false;
     $scope.petsNotFound = false;
     $scope.errorRest = false;
@@ -49,5 +49,15 @@ angular.module('petstartApp.petListView', ['ngRoute'])
         //Reset the state of form field to future validations
         $scope.searchForm.$setPristine();
     };
+
+    $scope.loadPets = function() {
+        //TODO: use PetStartAPI to load all pets
+        $scope.pets = [
+            { id: 1, name: 'Lola', owner: 'Cíntia'},
+            { id: 2, name: 'Bily', owner: 'Melina'},
+            { id: 3, name: 'Lessi', owner: 'Rudi'}];
+    };
+
+    $scope.loadPets();
 
 }]);
