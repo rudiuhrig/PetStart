@@ -15,6 +15,16 @@ angular.module('petstartApp.api', [])
 	$http.defaults.headers.common['Authorization'] = 'Basic V0tENE43WU1BMXVpTThWOkR0ZFR0ek1MUWxBMGhrMkMxWWk1cEx5VklsQVE2OA==';
 	$http.defaults.headers.post['X-AppGlu-Environment'] = 'staging';
 
+	var _mockedPets = [ {    id: 1,    name: 'Lola',    owner: 'Cíntia', type: { id: 1,  description: 'Cachorro' }  },
+			         {    id: 2,    name: 'Bily',    owner: 'Melina', type: { id: 1,  description: 'Cachorro' }  },
+			         {    id: 3,    name: 'Lessi',    owner: 'Rudi', type: { id: 1,  description: 'Cachorro' }  }
+			       ];
+
+	var _mockedPetTypes = [ { id: 1,  description: 'Cachorro' },
+				   { id: 2,  description: 'Gato' },
+				   { id: 3,  description: 'Galinha' }
+				 ] ;
+
 	/**
 	* Prepare params to works with rest json
 	* @param {string} keyParam
@@ -48,11 +58,32 @@ angular.module('petstartApp.api', [])
 		return $http.get("http:///petstart/pets/" + id);
 	};
 
+	var _loadMockedPets = function() {
+		return _mockedPets;
+	};
+
+	var _loadMockedPet = function(id) {
+		var returnPet = null;
+		angular.forEach(_mockedPets, function(pet) {
+		            	if (pet.id == id) {
+		             	returnPet = pet;
+		            	}
+	        	});
+
+		return returnPet;
+	};
+
+	var _loadMockedPetTypes = function() {
+		return _mockedPetTypes ;
+	};
 
 	//Encapsulate functions
 	return {
 		searchPets: _searchPets,
 		loadPets: _loadPets,
-		loadPet: _loadPet
+		loadPet: _loadPet,
+		loadMockedPets: _loadMockedPets,
+		loadMockedPet: _loadMockedPet,
+		loadMockedPetTypes: _loadMockedPetTypes
 	}
 }]);

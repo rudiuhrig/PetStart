@@ -4,14 +4,18 @@
     <div class="jumbotron">
         <form name="addPetForm">
             <label for="id">Código</label>
-            <input type="text" name="id" disabled="true" readonly="true" value="{{pet.id}}"/>
+            <input type="text" name="id" disabled="true" readonly="true" value="{{pet.id}}" class="form-control"/>
 
             <label for="name">Nome</label>
-            <input type="name" name="name" value="{{pet.name}}" ng-required="true" ng-minlength="3" ng-maxlength="250"/>
+            <input type="name" name="name" value="{{pet.name}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
 
             <label for="owner">Dono</label>
-            <input type="owner" name="owner" value="{{pet.owner}}" ng-required="true" ng-minlength="3" ng-maxlength="250""/>
+            <input type="owner" name="owner" value="{{pet.owner}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
 
+            <label for="type">Tipo</label>
+            <select ng-model="pet.type" ng-options="type.description for type in petTypes" name="type" ng-required="true" class="form-control selectpicker">
+                        <option value="">Selecione um item</option>
+            </select>
 
             <div ng-hide="addPetForm.$valid || addPetForm.$pristine">
                     <div ng-show="addPetForm.name.$error.required" class="alert alert-danger" role="alert">

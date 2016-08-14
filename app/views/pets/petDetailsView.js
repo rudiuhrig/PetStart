@@ -22,19 +22,21 @@ angular.module('petstartApp.petDetailsView', ['ngRoute'])
 
     //Initialize variables
     $scope.appTitle  = 'Detahes do Pet';
-    $scope.pets = [  {    id: 1,    name: 'Lola',    owner: 'Cíntia'  },  {    id: 2,    name: 'Bily',    owner: 'Melina'  },  {    id: 3,    name: 'Lessi',    owner: 'Rudi'  }];
     $scope.pet = null;
+    $scope.petTypes  = [];
 
-    //Reset the state of form field to future validations
- //   $scope.addPetForm.$setPristine();
+    $scope.loadPetTypes = function() {
+        $scope.petTypes = PetStartAPI.loadMockedPetTypes();
+
+        // PetStartAPI.loadPetTypes().success(function(data, status) {
+        //     $scope.petTypes =  data;
+        // }).error(function(data, status) {
+        //     console.log(data);
+        // });
+    };
 
     $scope.loadPet = function(id) {
-
-        angular.forEach($scope.pets, function(pet) {
-            if (pet.id == id) {
-                $scope.pet = pet;
-            }
-        });
+        $scope.pet = PetStartAPI.loadMockedPet(id);
 
         // PetStartAPI.loadPet(id).success(function(data, status) {
         //     $scope.pet =  data;
@@ -45,9 +47,11 @@ angular.module('petstartApp.petDetailsView', ['ngRoute'])
         //         console.table(config);
         // });
 
-         //TODO: $scope.searchForm.$setPristine();
+         //TODO: //Reset the state of form field to future validations
+         //$scope.addPetForm.$setPristine();
     };
 
     $scope.loadPet($routeParams.id);
+    $scope.loadPetTypes();
 
 }]);

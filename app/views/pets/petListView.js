@@ -72,7 +72,7 @@ angular.module('petstartApp.petListView', ['ngRoute'])
 
     $scope.loadPets = function() {
 
-        $scope.pets = [  {    id: 1,    name: 'Lola',    owner: 'Cíntia'  },  {    id: 2,    name: 'Bily',    owner: 'Melina'  },  {    id: 3,    name: 'Lessi',    owner: 'Rudi'  }];
+        $scope.pets = PetStartAPI.loadMockedPets();
 
             // PetStartAPI.loadPets().success(function(response) {
             //     $scope.pets = response.data;
