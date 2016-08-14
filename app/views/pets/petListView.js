@@ -39,6 +39,7 @@ angular.module('petstartApp.petListView', ['ngRoute'])
             if (data.length <= 0) {
                 $scope.petsNotFound = true;
             }
+
         }).error(function(data, status) {
             console.log("Error status: " + status);
             $scope.errorRest = true;
@@ -48,14 +49,40 @@ angular.module('petstartApp.petListView', ['ngRoute'])
 
         //Reset the state of form field to future validations
         $scope.searchForm.$setPristine();
+        console.table($scope);
+    };
+
+    $scope.orderBy = function(field) {
+        $scope.field = field;
+        $scope.direction = !$scope.direction;
+    };
+
+     /**
+     * Set filters for next page
+     * @param {string} clickedRoute
+     * @return: void
+     */
+    $scope.setFilters = function(clickedPet) {
+        // var searchFilters = {
+        //     'searchedPetName': $scope.petName,
+        //     'clickedPet': clickedPet.name + " - " + clickedPet.owner
+        // };
+        // PersistenceService.persistFilters(searchFilters);
     };
 
     $scope.loadPets = function() {
-        //TODO: use PetStartAPI to load all pets
-        $scope.pets = [
-            { id: 1, name: 'Lola', owner: 'Cíntia'},
-            { id: 2, name: 'Bily', owner: 'Melina'},
-            { id: 3, name: 'Lessi', owner: 'Rudi'}];
+
+        $scope.pets = [  {    id: 1,    name: 'Lola',    owner: 'Cíntia'  },  {    id: 2,    name: 'Bily',    owner: 'Melina'  },  {    id: 3,    name: 'Lessi',    owner: 'Rudi'  }];
+
+            // PetStartAPI.loadPets().success(function(response) {
+            //     $scope.pets = response.data;
+
+            // }).error(function(data, status, headers, config) {
+            //     console.log("Error status: " + status);
+            //     console.table(data);
+            //     console.table(headers);
+            //     console.table(config);
+            // });
     };
 
     $scope.loadPets();

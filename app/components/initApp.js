@@ -7,6 +7,7 @@ angular.module('petstartApp', [
   'petstartApp.view2',
   'petstartApp.mainView',
   'petstartApp.petListView',
+  'petstartApp.petDetailsView',
   'petstartApp.version',
   'petstartApp.footer-directive',
   'petstartApp.menu-directive',
@@ -14,7 +15,16 @@ angular.module('petstartApp', [
   'petstartApp.api',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/main'});
+    /**
+    * Routing for base path
+    * @example: http://petstart/#!/
+    */
+    $routeProvider.when('/', {
+        templateUrl: 'views/main/mainView.html',
+        controller: 'MainViewCtrl'
+    });
+
+    $routeProvider.otherwise({redirectTo: '/main'});
 }]);

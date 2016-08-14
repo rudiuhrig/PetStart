@@ -1,0 +1,42 @@
+<div class="container">
+    <h4>{{appTitle}}</h4>
+
+    <div class="jumbotron">
+        <form name="addPetForm">
+            <label for="id">Código</label>
+            <input type="text" name="id" disabled="true" readonly="true" value="{{pet.id}}"/>
+
+            <label for="name">Nome</label>
+            <input type="name" name="name" value="{{pet.name}}" ng-required="true" ng-minlength="3" ng-maxlength="250"/>
+
+            <label for="owner">Dono</label>
+            <input type="owner" name="owner" value="{{pet.owner}}" ng-required="true" ng-minlength="3" ng-maxlength="250""/>
+
+
+            <div ng-hide="addPetForm.$valid || addPetForm.$pristine">
+                    <div ng-show="addPetForm.name.$error.required" class="alert alert-danger" role="alert">
+                        Por favor, informe o nome do pet
+                    </div>
+                    <div ng-show="addPetForm.name.$error.minlength" class="alert alert-warning" role="alert">
+                        <strong>Aviso!</strong> Necessário no mínimo 3 letras
+                    </div>
+                    <div ng-show="addPetForm.name.$error.maxlength" class="alert alert-warning" role="alert">
+                        <strong>Aviso!</strong> Máximo 250 letras
+                    </div>
+                    <div ng-show="addPetForm.owner.$error.required" class="alert alert-danger" role="alert">
+                        Por favor, informe o nome do dono
+                    </div>
+                    <div ng-show="addPetForm.owner.$error.minlength" class="alert alert-warning" role="alert">
+                        <strong>Aviso!</strong> Necessário no mínimo 3 letras
+                    </div>
+                    <div ng-show="addPetForm.owner.$error.maxlength" class="alert alert-warning" role="alert">
+                        <strong>Aviso!</strong> Máximo 250 letras
+                    </div>
+            </div>
+
+            <a class="btn btn-lg btn-success" href="#!/pets" role="button">Voltar</a>
+            <a class="btn btn-lg btn-success" ng-disabled="addPetForm.$invalid" role="button">Salvar</a>
+
+        </form>
+    </div>
+</div>
