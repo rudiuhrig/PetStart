@@ -17,7 +17,9 @@ angular.module('petstartApp.api', [])
 
 	var _mockedPets = [ {    id: 1,    name: 'Lola',    owner: 'Cíntia', type: { id: 1,  description: 'Cachorro' }  },
 			         {    id: 2,    name: 'Bily',    owner: 'Melina', type: { id: 1,  description: 'Cachorro' }  },
-			         {    id: 3,    name: 'Lessi',    owner: 'Rudi', type: { id: 1,  description: 'Cachorro' }  }
+			         {    id: 3,    name: 'Lessi',    owner: 'Rudi', type: { id: 1,  description: 'Cachorro' }  },
+			         {    id: 4,    name: 'Galimãe',   owner: 'Gilson', type: { id: 3,  description: 'Galinha' }  },
+			         {    id: 5,    name: 'Garfield',   owner: 'John', type: { id: 2,  description: 'Gato' }  }
 			       ];
 
 	var _mockedPetTypes = [ { id: 1,  description: 'Cachorro' },
@@ -77,6 +79,19 @@ angular.module('petstartApp.api', [])
 		return _mockedPetTypes ;
 	};
 
+	var _savePet = function(pet) {
+		_mockedPets.push(angular.copy(pet));
+	};
+
+	var _findPetById = function(id) {
+	            angular.forEach(_mockedPets, function(pet) {
+	       		if(pet.id === id) {
+	       			//this.push(pet);
+	       			return pet;
+	       		}
+	    	}, _mockedPets);
+	}
+
 	//Encapsulate functions
 	return {
 		searchPets: _searchPets,
@@ -84,6 +99,7 @@ angular.module('petstartApp.api', [])
 		loadPet: _loadPet,
 		loadMockedPets: _loadMockedPets,
 		loadMockedPet: _loadMockedPet,
-		loadMockedPetTypes: _loadMockedPetTypes
+		loadMockedPetTypes: _loadMockedPetTypes,
+		savePet: _savePet
 	}
 }]);

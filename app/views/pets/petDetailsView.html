@@ -13,8 +13,8 @@
             <input type="owner" name="owner" value="{{pet.owner}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
 
             <label for="type">Tipo</label>
-            <select ng-model="pet.type" ng-options="type.description for type in petTypes" name="type" ng-required="true" class="form-control selectpicker">
-                        <option value="">Selecione um item</option>
+            <select ng-model="petType" ng-options="type.description for type in petTypes track by type.id" name="type" ng-required="true" class="form-control selectpicker">
+                <option value="">Selecione um item</option>
             </select>
 
             <div ng-hide="addPetForm.$valid || addPetForm.$pristine">
@@ -39,7 +39,10 @@
             </div>
 
             <a class="btn btn-lg btn-success" href="#!/pets" role="button">Voltar</a>
-            <a class="btn btn-lg btn-success" ng-disabled="addPetForm.$invalid" role="button">Salvar</a>
+
+            <button ng-click="savePet(pet)" ng-disabled="addPetForm.$invalid" class="btn btn-lg btn-success">
+                        Salvar
+            </button>
 
         </form>
     </div>
