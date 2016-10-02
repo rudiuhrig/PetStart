@@ -4,16 +4,16 @@
     <div class="jumbotron">
         <form name="addPetForm">
             <label for="id">Código</label>
-            <input type="text" name="id" disabled="true" readonly="true" value="{{pet.id}}" class="form-control"/>
+            <input type="text" ng-model="pet.id" name="id" disabled="true" readonly="true" value="{{pet.id}}" class="form-control"/>
 
             <label for="name">Nome</label>
-            <input type="name" name="name" value="{{pet.name}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
+            <input type="name" ng-model="pet.name" name="name" value="{{pet.name}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
 
             <label for="owner">Dono</label>
-            <input type="owner" name="owner" value="{{pet.owner}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
+            <input type="owner" ng-model="pet.owner" name="owner" value="{{pet.owner}}" ng-required="true" ng-minlength="3" ng-maxlength="250" class="form-control"/>
 
             <label for="type">Tipo</label>
-            <select ng-model="petType" ng-options="type.description for type in petTypes track by type.id" name="type" ng-required="true" class="form-control selectpicker">
+            <select ng-model="pet.type" ng-options="type.description for type in petTypes track by type.id" name="type" ng-required="true" class="form-control selectpicker">
                 <option value="">Selecione um item</option>
             </select>
 
@@ -35,6 +35,9 @@
                     </div>
                     <div ng-show="addPetForm.owner.$error.maxlength" class="alert alert-warning" role="alert">
                         <strong>Aviso!</strong> Máximo 250 letras
+                    </div>
+                    <div ng-show="addPetForm.type.$error.required" class="alert alert-danger" role="alert">
+                        Por favor, selecione um tipo de animal
                     </div>
             </div>
 

@@ -24,7 +24,6 @@ angular.module('petstartApp.petDetailsView', ['ngRoute'])
     $scope.appTitle  = 'Detahes do Pet';
     $scope.pet = null;
     $scope.petTypes  = [];
-    $scope.petType = null;
 
     $scope.loadPetTypes = function() {
         $scope.petTypes = PetStartAPI.loadMockedPetTypes();
@@ -38,7 +37,6 @@ angular.module('petstartApp.petDetailsView', ['ngRoute'])
 
     $scope.loadPet = function(id) {
         $scope.pet = PetStartAPI.loadMockedPet(id);
-        $scope.petType = $scope.pet.type;
 
         // PetStartAPI.loadPet(id).success(function(data, status) {
         //     $scope.pet =  data;
@@ -54,9 +52,9 @@ angular.module('petstartApp.petDetailsView', ['ngRoute'])
     };
 
     $scope.savePet = function(pet) {
-        pet.type = $scope.petType;
-
         PetStartAPI.savePet(pet);
+
+        delete $scope.pet;
 
         $location.path('/pets');
     };

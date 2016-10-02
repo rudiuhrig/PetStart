@@ -80,16 +80,23 @@ angular.module('petstartApp.api', [])
 	};
 
 	var _savePet = function(pet) {
+		var petFound = _findPetById(pet.id);
+		if (petFound != null) {
+			//TODO: remove from array
+		}
+
 		_mockedPets.push(angular.copy(pet));
 	};
 
 	var _findPetById = function(id) {
+		var petFound = null;
 	            angular.forEach(_mockedPets, function(pet) {
 	       		if(pet.id === id) {
-	       			//this.push(pet);
-	       			return pet;
+	       			petFound = pet;
 	       		}
-	    	}, _mockedPets);
+	    	}, petFound);
+
+	            return petFound;
 	}
 
 	//Encapsulate functions
