@@ -70,6 +70,11 @@ angular.module('petstartApp.petListView', ['ngRoute'])
         // PersistenceService.persistFilters(searchFilters);
     };
 
+    $scope.removePet = function(pet) {
+        PetStartAPI.removePet(pet);
+        $scope.loadPets();
+    };
+
     $scope.loadPets = function() {
 
         $scope.pets = PetStartAPI.loadMockedPets();

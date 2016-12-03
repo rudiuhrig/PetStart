@@ -67,10 +67,10 @@ angular.module('petstartApp.api', [])
 	var _loadMockedPet = function(id) {
 		var returnPet = null;
 		angular.forEach(_mockedPets, function(pet) {
-		            	if (pet.id == id) {
-		             	returnPet = pet;
-		            	}
-	        	});
+			if (pet.id == id) {
+				returnPet = pet;
+			}
+		});
 
 		return returnPet;
 	};
@@ -79,7 +79,15 @@ angular.module('petstartApp.api', [])
 		return _mockedPetTypes ;
 	};
 
+	var _getMockedNextId = function() {
+		return _loadMockedPets().length;
+	};
+
 	var _savePet = function(pet) {
+		if (pet.id === undefined) {
+			pet.id = _getMockedNextId();
+		}
+
 		var petFound = _findPetById(pet.id);
 		if (petFound != null) {
 			//TODO: remove from array
@@ -90,14 +98,19 @@ angular.module('petstartApp.api', [])
 
 	var _findPetById = function(id) {
 		var petFound = null;
-	            angular.forEach(_mockedPets, function(pet) {
-	       		if(pet.id === id) {
-	       			petFound = pet;
-	       		}
-	    	}, petFound);
+		angular.forEach(_mockedPets, function(pet) {
+			if(pet.id === id) {
+				petFound = pet;
+			}
+		}, petFound);
 
-	            return petFound;
-	}
+	    return petFound;
+	};
+
+	var _removePet = function(pet) {
+console.log(pet);
+		//TODO remove pet from array
+	};
 
 	//Encapsulate functions
 	return {
@@ -107,6 +120,7 @@ angular.module('petstartApp.api', [])
 		loadMockedPets: _loadMockedPets,
 		loadMockedPet: _loadMockedPet,
 		loadMockedPetTypes: _loadMockedPetTypes,
-		savePet: _savePet
+		savePet: _savePet,
+		removePet : _removePet
 	}
 }]);
