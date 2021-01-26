@@ -1,3 +1,8 @@
+# PetStart
+
+PetStart is a simple pet shop management application. This application is for learning purposes only and is incomplete.
+
+
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
