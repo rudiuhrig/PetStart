@@ -80,7 +80,7 @@ angular.module('petstartApp.api', [])
 	};
 
 	var _getMockedNextId = function() {
-		return _loadMockedPets().length;
+		return _mockedPets.length + 1;
 	};
 
 	var _savePet = function(pet) {
@@ -109,7 +109,7 @@ angular.module('petstartApp.api', [])
 
 	var _removePet = function(pet) {
 console.log(pet);
-		//TODO remove pet from array
+		//TODO remove pet from array _mockedPets.filter()
 	};
 
 	//Encapsulate functions
