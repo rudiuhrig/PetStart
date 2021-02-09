@@ -3,46 +3,10 @@
 PetStart is a simple pet shop management application. This application is for learning purposes only and is incomplete.
 
 
-# angular-seed — the seed for AngularJS apps
+### Based angular-seed — the seed for AngularJS apps
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
+This project is based on angular-seed application skeleton [AngularJS](http://angularjs.org/) web app.
 
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
-
-The seed app doesn't do much, just shows how to wire two controllers and views together.
-
-
-## Getting Started
-
-To get you started you can simply clone the angular-seed repository and install the dependencies:
-
-### Prerequisites
-
-You need git to clone the angular-seed repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
-
-We also use a number of node.js tools to initialize and test angular-seed. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
-
-### Clone angular-seed
-
-Clone the angular-seed repository using [git][git]:
-
-```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
-```
-
-If you just want to start a new project without the angular-seed commit history then you can do:
-
-```bash
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
-```
-
-The `depth=1` tells git to only pull down one commit worth of historical data.
 
 ### Install Dependencies
 
@@ -56,6 +20,12 @@ We have preconfigured `npm` to automatically run `bower` so we can simply do:
 
 ```
 npm install
+```
+
+Add dependency http-server https://www.npmjs.com/package/http-server
+
+```
+npm install --global http-server
 ```
 
 Behind the scenes this will also call `bower install`.  You should find that you have two new
@@ -280,8 +250,7 @@ instruction on how to do this.
 
 CloudBees have provided a CI/deployment setup:
 
-<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">
-<img src="https://d3ko533tu1ozfq.cloudfront.net/clickstart/deployInstantly.png"/></a>
+<a href="https://grandcentral.cloudbees.com/?CB_clickstart=https://raw.github.com/CloudBees-community/angular-js-clickstart/master/clickstart.json">deployInstantly</a>
 
 If you run this, you will get a cloned version of this repo to start working on in a private git repo,
 along with a CI service (in Jenkins) hosted that will run unit and end to end tests in both Firefox and Chrome.
