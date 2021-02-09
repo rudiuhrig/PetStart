@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "petstart",
   "private": true,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "version": "1.0.0",
+  "description": "PetStart is a simple pet shop management application",
+  "repository": "https://github.com/rudiuhrig/PetStart",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",
